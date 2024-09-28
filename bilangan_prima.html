@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cari Bilangan Prima</title>
+</head>
+<body>
+    <h1>Cari Bilangan Prima</h1>
+    <input type="number" id="limit" placeholder="Masukkan batas" />
+    <button onclick="findPrimes()">Cari</button>
+    <p id="result"></p>
+
+    <script>
+        function isPrime(n) {
+            if (n <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+
+        function findPrimes() {
+            const limit = parseInt(document.getElementById('limit').value);
+            const primes = [];
+            for (let num = 2; num <= limit; num++) {
+                if (isPrime(num)) {
+                    primes.push(num);
+                }
+            }
+            document.getElementById('result').innerText = 'Bilangan prima: ' + primes.join(', ');
+        }
+    </script>
+</body>
+</html>
